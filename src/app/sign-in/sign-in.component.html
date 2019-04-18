@@ -1,0 +1,183 @@
+<div class="container">
+    <div *ngIf="logIn" clas="signInUser">
+        <br><br><br><br><br><br><br><br>
+        <mat-card class="sign-in" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-header>
+                <mat-card-title>Log In</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions>
+                <h5>Email Address</h5>
+                <input class="signInInput" [(ngModel)]="logInEmail" placeholder="Email">
+                <h5>Password</h5>
+                <input class="signInInput" [(ngModel)]="logInPassword" placeholder="Password">
+                <div class="buttonBlock">
+                    <div class="logInButton">
+                        <button class="buttons" mat-raised-button color="primary" (click)="logInUser()">Log In</button>
+                    </div>
+                    <h4 class="or">Or don't have an account</h4>
+                    <div class="signUpButton">
+                        <button class="buttons" mat-raised-button color="primary" (click)="onClickSignUp()">Sign Up</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div *ngIf="selectUser" class="selectSignUpType">
+        <h1 class="selectionTitle">Please Pick the Account Type to Sign Up</h1>
+        <div class="selectButtonBlock">
+            <div class="selectUserButton">
+                <button class="selectionButtons" mat-raised-button color="primary" (click)="onClickUserAccount()">Sign Up A User Account</button>
+            </div>
+            <div class="selectSchoolButton">
+                <button class="selectionButtons" mat-raised-button color="primary" (click)="onClickSchoolAccount()">Sign Up A School Account</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isSchoolSignUp" class="container">
+        <br><br><br><br>
+        <mat-horizontal-stepper [linear]="false" #stepper>
+            <mat-step [completed]="false">
+                <form class="school-first-step">
+                    <ng-template matStepLabel>Enter email and password</ng-template>
+                        <mat-form-field class="school-first-step-inputs">
+                            <input matInput placeholder="Email" [(ngModel)]="schoolSignUpEmail" name="schoolEmail" required>
+                        </mat-form-field>
+                        <mat-form-field class="school-first-step-inputs">
+                            <input matInput placeholder="Password" [(ngModel)]="schoolSignUpPassword" name="schoolPassword" required>
+                        </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [completed]="false">
+                <form class="school-first-step">
+                    <ng-template matStepLabel>Fill out additional information</ng-template>
+                    <mat-form-field class="school-first-step-inputs">
+                        <input matInput placeholder="School Name" [(ngModel)]="schoolSignUpName" name="schoolName" required>
+                    </mat-form-field>
+                    <mat-form-field class="school-first-step-inputs">
+                        <input matInput placeholder="School Address" [(ngModel)]="schoolSignUpAddress" name="schoolAddress" required>
+                    </mat-form-field>
+                    <mat-form-field class="school-first-step-inputs">
+                        <input matInput placeholder="School Phone Number" [(ngModel)]="schoolSignUpPhoneNum" name="phoneNumber" required>
+                    </mat-form-field>
+                    <mat-form-field class="school-first-step-inputs">
+                        <input matInput placeholder="City" [(ngModel)]="schoolSignCity" name="city" required>
+                    </mat-form-field>
+                    <mat-select class="school-first-step-inputs" placeholder="State" [(ngModel)]="schoolSignUpState" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                    <br><br>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [completed]="false">
+                <form class="school-first-step">
+                    <ng-template matStepLabel>Upload a picture</ng-template>
+                    <div class="container">
+                        <h1 class="upload-file-title" mat-dialog-title>Upload A Picture (Only PNG or JPG):</h1>
+                        <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [completed]="false">
+                <mat-grid-list cols="2">
+                    <mat-grid-tile>
+                        <form class="school-first-step">
+                            <h2>Fund Information</h2>
+                            <ng-template matStepLabel>Start with some funds</ng-template>
+                            <mat-form-field class="school-first-step-inputs">
+                                <input matInput placeholder="Fund Name" [(ngModel)]="fundSignUpName" name="fundName" required>
+                            </mat-form-field>
+                            <mat-form-field class="school-first-step-inputs">
+                                <input matInput placeholder="Fund Goal Amount" [(ngModel)]="fundSignUpGoal"
+                                    name="fundGoalAmount" required>
+                            </mat-form-field>
+                            <mat-form-field class="school-first-step-inputs">
+                                <textarea matInput placeholder="Enter a Desription" [(ngModel)]="fundSignUpDescription"
+                                    name="fundDescription" required></textarea>
+                            </mat-form-field>
+                            <mat-form-field class="school-first-step-inputs">
+                                <input matInput placeholder="Department Fund Belongs To" [(ngModel)]="fundSignUpDepartment"
+                                    name="fundDepartment" required>
+                            </mat-form-field>
+                            <div class="container">
+                                <h2 class="upload-file-title" mat-dialog-title>Upload A Fund Picture(Only PNG or JPG):</h2>
+                                <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                            </div>
+                            <br>
+                            <button mat-raised-button color="primary" (click)="submitAndAddAnother()">Submit And Add Another</button>
+                        </form>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <h1 *ngIf="areFunds">Current Funds</h1>
+                        <div>
+                            <mat-chip-list>
+                                <mat-chip *ngFor="let fund of funds" [selectable]="selectable" [removable]="removable"
+                                    (removed)="remove(fund)">
+                                    {{fund.name}}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                            </mat-chip-list>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step [completed]="false">
+                <ng-template matStepLabel>Done</ng-template>
+                You are now done.
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="signUpSchool()">Submit</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+    <div *ngIf="isUserSignUp" class="container">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <mat-form-field>
+                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <mat-form-field>
+                        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                You are now done.
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</div>

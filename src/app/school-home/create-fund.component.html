@@ -1,0 +1,30 @@
+<div>
+    <h1 class="create-fund-title" mat-dialog-title>Create a Fund</h1>
+    <br>
+</div>
+<span class="no-margin">
+    <mat-form-field class="full-field">
+        <input matInput [(ngModel)]="name" placeholder="Fund Name" required>
+        <mat-error>This field cannot be left blank</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-field">
+        <input matInput [(ngModel)]="department" placeholder="Department Name" required>
+        <mat-error>This field cannot be left blank</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-field">
+        <input matInput [(ngModel)]="goalAmount" placeholder="Enter Your Goal Here" required>
+        <mat-error>This field cannot be left blank</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-field">
+        <input matInput [(ngModel)]="description" placeholder="Enter Some Information about the Fund" required>
+        <mat-error>This field cannot be left blank</mat-error>
+    </mat-form-field>
+    <div class="container">
+        <h1 class ="upload-file-title" mat-dialog-title>Upload A Picture (Only PNG or JPG):</h1>
+        <input type="file" (change)="upload($event)" accept=".png,.jpg"/>
+    </div>
+    <div class="row" class="right">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="[name, department, goalAmount, description]" (click)="createFund()">Create</button>
+    </div>
+</span>

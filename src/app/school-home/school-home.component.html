@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="main-heading">Hope Lutheran High School</h1>
+    </div>
+  </div>
+  <div class="buttonBlock">
+      <div class="requestButton">
+        <button mat-raised-button class="buttons" color="accent">Request a Fund</button>
+      </div>
+      <div class="createFundButton">
+        <button mat-raised-button class="buttons" color="accent" (click)="createFund()">Create Fund</button>
+      </div>
+      <div class="contactButton">
+        <button mat-raised-button class="buttons" color="accent">Contact School</button>
+      </div>
+  </div>
+  <img class="schoolProfilePic" src="assets/hlhsLogo.png" />
+  <div class="sortBy">
+    <h3>Sort By</h3>
+      <span>
+        <mat-form-field>
+            <select class="select" matNativeControl required>
+              <option value="name">Name</option>
+              <option value="organization">Organization</option>
+              <option value="date">Date</option>
+              <option value="highToLow">Fund Amount (Highest to Lowest)</option>
+              <option value="lowToHigh">Fund Amount (Lowest to Highest)</option>
+            </select>
+          </mat-form-field>
+    </span>
+      
+  </div>
+  <div class="row align-items-end">
+    <div *ngFor="let feature of features" class="col-md-6 col-lg-4" [ngClass]="routeAnimationsElements">
+      <mat-card>
+        <mat-card-title>
+          {{feature.name | translate}}
+        </mat-card-title>
+        <img mat-card-image class="cardPictures" src={{feature.imageLoc}} alt="Fund Photos"/>
+        <mat-progress-bar mode="determinate" value={{feature.value}}></mat-progress-bar>
+            {{ feature.description | translate }}
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+

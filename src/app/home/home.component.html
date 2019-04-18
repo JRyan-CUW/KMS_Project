@@ -1,0 +1,74 @@
+<div class="background">
+  <div class="gradient">
+    <div class="container">
+        <br>
+        <br>
+      <h1>Fund What Means Most To you</h1>
+        <br>
+        <br>
+      <div class="actions">
+        <h2>Start searching for your school below</h2>
+      </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+  <h3>Find Your School</h3>
+  <div class="searchText">
+    Search By:
+    <span class="searchButtons">
+        <button mat-raised-button (click)="onClickedName()">Name</button>
+        <span class="searchButtons">
+          <button mat-raised-button (click)="onClickedState()">State</button>
+        </span>
+    </span>
+  </div>
+  <form class="school-form">
+    <div *ngIf="clickedName">
+      <mat-form-field class="input-full-width">
+        <input matInput class="schoolInput" placeholder="School Name" aria-label="School" [formControl]="schoolCtrl"
+          [matAutocomplete]="auto">
+      </mat-form-field>
+      <mat-autocomplete class="matAutocomplete" #auto="matAutocomplete">
+        <mat-option *ngFor="let school of filteredSchools | async" [value]="school.name">
+          <span>{{ school.name }}   </span>
+          <small>State: {{school.state}}</small>
+        </mat-option>
+      </mat-autocomplete>
+      <span class="goButton">
+        <button mat-raised-button color="accent" style="width: 100%; font-size: 20px;" (click)="onClickSearchName()">Search</button>
+      </span>
+    </div>
+    <div *ngIf="clickedLocation">
+      <mat-form-field class="input-full-width">
+        <mat-select class="schoolInput" placeholder="State">
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="goButton">
+        <button mat-raised-button color="accent" style="width: 100%; font-size: 20px;" (click)="onClickSearchState()">Search</button>
+      </span>
+    </div>
+    <span *ngIf="showStateSchools">
+        <mat-list role="list">
+          <mat-list-item role="listitem">Item 1</mat-list-item>
+          <mat-list-item role="listitem">Item 2</mat-list-item>
+          <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+      </span>
+  </form>
+  
+</div>
+<div class="container">
+  
+</div>
