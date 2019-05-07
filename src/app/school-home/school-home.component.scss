@@ -1,4 +1,4 @@
-@import "../../styles-variables";
+@import '../../styles-variables';
 
 .container {
   margin-top: 20px;
@@ -12,7 +12,7 @@
   margin: 0 0 20px 0;
 }
 
-.cardPictures {
+.cardPictures  {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -20,43 +20,43 @@
   height: 30%;
 }
 
-.schoolProfilePic {
+.schoolProfilePic{
   width: 45%;
   height: 45%;
   padding-bottom: 40px;
 }
 
-.buttons {
+.buttons{
   display: block;
   height: 60px !important;
   width: 250px !important;
   font-size: 20px;
 }
 
-.sortBy {
+.sortBy{
   display: inline-block;
   padding-bottom: 10px;
 }
 
-.buttonBlock {
+.buttonBlock{
   float: right;
   padding-right: 20%;
   padding-top: 10%;
 }
 
-.contactButton {
+.contactButton{
   padding-top: 50px;
 }
 
-.createFundButton {
+.createFundButton{
   padding-top: 50px;
 }
 
-select {
+select{
   width: 500px;
 }
 
-mat-card img {
+mat-card img{
   object-fit: cover;
 }
 

@@ -102,7 +102,7 @@
                                     name="fundGoalAmount" required>
                             </mat-form-field>
                             <mat-form-field class="school-first-step-inputs">
-                                <textarea matInput placeholder="Enter a Desription" [(ngModel)]="fundSignUpDescription"
+                                <textarea matInput placeholder="Enter a Description" [(ngModel)]="fundSignUpDescription"
                                     name="fundDescription" required></textarea>
                             </mat-form-field>
                             <mat-form-field class="school-first-step-inputs">
@@ -111,7 +111,7 @@
                             </mat-form-field>
                             <div class="container">
                                 <h2 class="upload-file-title" mat-dialog-title>Upload A Fund Picture(Only PNG or JPG):</h2>
-                                <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                                <input type="file" (change)="uploadFund($event)" accept=".png,.jpg" />
                             </div>
                             <br>
                             <button mat-raised-button color="primary" (click)="submitAndAddAnother()">Submit And Add Another</button>

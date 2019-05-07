@@ -1,42 +1,42 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { SettingsContainerComponent } from "./settings";
-import { SchoolHomeComponent } from "./school-home/school-home.component";
-import { FundHomeComponent } from "./fund-home/fund-home.component";
-import { HomeComponent } from "./home/home.component";
-import { SignInComponent } from "./sign-in/sign-in.component";
+import { SettingsContainerComponent } from './settings';
+import { SchoolHomeComponent } from './school-home/school-home.component';
+import { FundHomeComponent } from './fund-home/fund-home.component';
+import { HomeComponent } from './home/home.component';
+import { SignInComponent } from './sign-in/sign-in.component'
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: HomeComponent
   },
   {
-    path: "settings",
+    path: 'settings',
     component: SettingsContainerComponent,
-    data: { title: "anms.menu.settings" }
+    data: { title: 'anms.menu.settings' }
   },
   {
-    path: "school-home",
+    path: 'school-home',
     component: SchoolHomeComponent
   },
   {
-    path: "fund-home",
+    path: 'fund-home',
     component: FundHomeComponent
   },
   {
-    path: "sign-in",
+    path: 'sign-in',
     component: SignInComponent
   },
   {
-    path: "about",
+    path: 'about',
     component: SettingsContainerComponent,
-    data: { title: "anms.menu.settings" }
+    data: { title: 'anms.menu.settings' }
   },
   {
-    path: "**",
-    redirectTo: "about"
+    path: '**',
+    redirectTo: 'about'
   }
 ];
 
@@ -45,7 +45,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       useHash: true,
-      scrollPositionRestoration: "enabled"
+      scrollPositionRestoration: 'enabled'
     })
   ],
   exports: [RouterModule]

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="main-heading">Hope Lutheran High School</h1>
+      <h1 class="main-heading">{{selectedSchool.name}}</h1>
     </div>
   </div>
   <div class="buttonBlock">
@@ -9,13 +9,13 @@
         <button mat-raised-button class="buttons" color="accent">Request a Fund</button>
       </div>
       <div class="createFundButton">
-        <button mat-raised-button class="buttons" color="accent" (click)="createFund()">Create Fund</button>
+        <button mat-raised-button class="buttons" color="accent" (click)="createFund()">Add a Fund</button>
       </div>
-      <div class="contactButton">
+      <!-- <div class="contactButton">
         <button mat-raised-button class="buttons" color="accent">Contact School</button>
-      </div>
+      </div> -->
   </div>
-  <img class="schoolProfilePic" src="assets/hlhsLogo.png" />
+  <img class="schoolProfilePic" [src]="selectedSchool.picFullLoc" />
   <div class="sortBy">
     <h3>Sort By</h3>
       <span>
@@ -32,14 +32,15 @@
       
   </div>
   <div class="row align-items-end">
-    <div *ngFor="let feature of features" class="col-md-6 col-lg-4" [ngClass]="routeAnimationsElements">
-      <mat-card>
+    <div *ngFor="let fund of funds" class="col-md-6 col-lg-4" [ngClass]="routeAnimationsElements">
+      <mat-card (click)="onClickFund(fund)">
         <mat-card-title>
-          {{feature.name | translate}}
+          {{ fund.name }}
         </mat-card-title>
-        <img mat-card-image class="cardPictures" src={{feature.imageLoc}} alt="Fund Photos"/>
-        <mat-progress-bar mode="determinate" value={{feature.value}}></mat-progress-bar>
-            {{ feature.description | translate }}
+        <img mat-card-image class="cardPictures" [src]="fund.picFullLoc" alt="Fund Photos"/>
+        <small>${{ fund.currentAmount }}/${{ fund.goalAmount }}</small>
+        <mat-progress-bar mode="determinate" value={{fund.value}}></mat-progress-bar>
+            {{ fund.description }}
       </mat-card>
     </div>
   </div>

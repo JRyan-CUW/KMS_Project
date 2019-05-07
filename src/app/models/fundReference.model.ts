@@ -1,4 +1,6 @@
+
+
 export class FundReference {
-  name?: string;
-  fundId?: string[];
+    name?: string;
+    fundId?: string[];
 }

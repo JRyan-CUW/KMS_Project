@@ -1,8 +1,8 @@
-import browser from "browser-detect";
-import { Component, OnInit } from "@angular/core";
-import { Store, select } from "@ngrx/store";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+import browser from 'browser-detect';
+import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Router  } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import {
   ActionAuthLogin,
@@ -11,8 +11,8 @@ import {
   AppState,
   LocalStorageService,
   selectIsAuthenticated
-} from "@app/core";
-import { environment as env } from "@env/environment";
+} from '@app/core';
+import { environment as env } from '@env/environment';
 
 import {
   ActionSettingsChangeLanguage,
@@ -20,12 +20,12 @@ import {
   selectEffectiveTheme,
   selectSettingsLanguage,
   selectSettingsStickyHeader
-} from "./settings";
+} from './settings';
 
 @Component({
-  selector: "anms-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'anms-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
   animations: [routeAnimations]
 })
 export class AppComponent implements OnInit {
@@ -33,22 +33,22 @@ export class AppComponent implements OnInit {
   envName = env.envName;
   version = env.versions.app;
   year = new Date().getFullYear();
-  logo = require("../assets/logo.png");
-  languages = ["en", "de", "sk", "fr", "es", "pt-br", "zh-cn"];
+  logo = require('../assets/logo.png');
+  languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br', 'zh-cn'];
   navigation = [
-    { link: "about", label: "anms.menu.about" },
-    { link: "features", label: "anms.menu.features" }
+    { link: 'about', label: 'anms.menu.about' },
+    { link: 'features', label: 'anms.menu.features' },
   ];
   navigationSideMenu = [
     ...this.navigation,
-    { link: "settings", label: "anms.menu.settings" }
+    { link: 'settings', label: 'anms.menu.settings' }
   ];
 
   isAuthenticated$: Observable<boolean>;
   stickyHeader$: Observable<boolean>;
   language$: Observable<string>;
   theme$: Observable<string>;
-  router: Router;
+  router: Router
 
   constructor(
     private store: Store<AppState>,
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
   }
 
   private static isIEorEdgeOrSafari() {
-    return ["ie", "edge", "safari"].includes(browser().name);
+    return ['ie', 'edge', 'safari'].includes(browser().name);
   }
 
   ngOnInit(): void {
@@ -79,7 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   onLoginClick() {
-    this.router.navigate(["sign-in"]);
+    this.router.navigate(['sign-in'])
   }
 
   onLogoutClick() {

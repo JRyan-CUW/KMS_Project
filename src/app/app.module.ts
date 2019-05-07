@@ -1,37 +1,28 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule } from "@angular/core";
-import { SharedModule } from "@app/shared";
-import { CoreModule } from "@app/core";
-import { SettingsModule } from "./settings";
-import { FileUploadModule } from "ng2-file-upload";
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { SharedModule } from '@app/shared';
+import { CoreModule } from '@app/core';
+import { SettingsModule } from './settings';
+import { FileUploadModule } from 'ng2-file-upload';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
-import { AboutComponent } from "./about/about.component";
-import { HomeComponent } from "./home/home.component";
-import {
-  SchoolHomeComponent,
-  CreateFundDialogComponent
-} from "./school-home/school-home.component";
-import { FundHomeComponent } from "./fund-home/fund-home.component";
-import { SignInComponent } from "./sign-in/sign-in.component";
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { SchoolHomeComponent, CreateFundDialogComponent } from './school-home/school-home.component';
+import { FundHomeComponent } from './fund-home/fund-home.component';
+import { SignInComponent } from './sign-in/sign-in.component'
 
-import { FirebaseConfig } from "../environments/firebase.config";
+import { FirebaseConfig } from '../environments/firebase.config';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import {
-  AngularFireStorage,
-  AngularFireStorageModule
-} from "@angular/fire/storage";
-import {
-  AngularFirestore,
-  AngularFirestoreModule
-} from "@angular/fire/firestore";
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 
-import { AuthService } from "./services/auth.service";
-import { FirestoreService } from "./services/firestore.service";
+import { AuthService } from './services/auth.service'
+import { FirestoreService } from './services/firestore.service';
 
 import {
   MatAutocompleteModule,
@@ -69,11 +60,14 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
-} from "@angular/material";
+  MatTreeModule,
+} from '@angular/material';
+
+
 
 @NgModule({
-  exports: [],
+  exports: [
+  ],
   imports: [
     // materials
     MatAutocompleteModule,
@@ -146,15 +140,17 @@ import {
     SignInComponent,
 
     //Dialogs
-    CreateFundDialogComponent
+    CreateFundDialogComponent,
   ],
-  entryComponents: [CreateFundDialogComponent],
+  entryComponents: [
+    CreateFundDialogComponent,
+  ],
   bootstrap: [AppComponent],
   providers: [
     AngularFirestore,
     AngularFireStorage,
     AuthService,
-    FirestoreService
-  ]
+    FirestoreService,
+  ],
 })
 export class AppModule {}

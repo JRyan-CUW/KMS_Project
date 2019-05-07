@@ -41,33 +41,36 @@
       </mat-form-field>
       <mat-autocomplete class="matAutocomplete" #auto="matAutocomplete">
         <mat-option *ngFor="let school of filteredSchools | async" [value]="school.name">
-          <span>{{ school.name }}   </span>
+          <span>{{ school.name }} </span>
           <small>State: {{school.state}}</small>
         </mat-option>
       </mat-autocomplete>
       <span class="goButton">
-        <button mat-raised-button color="accent" style="width: 100%; font-size: 20px;" (click)="onClickSearchName()">Search</button>
+        <button mat-raised-button color="accent" style="width: 100%; font-size: 20px;"
+          (click)="onClickSearchName()">Search</button>
       </span>
     </div>
     <div *ngIf="clickedLocation">
       <mat-form-field class="input-full-width">
-        <mat-select class="schoolInput" placeholder="State">
+        <mat-select class="schoolInput" placeholder="State" [(ngModel)]="selectedState" [ngModelOptions]="{standalone: true}">
           <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
         </mat-select>
       </mat-form-field>
       <span class="goButton">
-        <button mat-raised-button color="accent" style="width: 100%; font-size: 20px;" (click)="onClickSearchState()">Search</button>
+        <button mat-raised-button color="accent" style="width: 100%; font-size: 20px;"
+          (click)="onClickSearchState()">Search</button>
       </span>
     </div>
-    <span *ngIf="showStateSchools">
+    <div *ngIf="showStateSchools">
+      <h4>Schools in {{selectedState}}</h4>
+      <div *ngIf="showStateSchools" class="stateList">
         <mat-list role="list">
-          <mat-list-item role="listitem">Item 1</mat-list-item>
-          <mat-list-item role="listitem">Item 2</mat-list-item>
-          <mat-list-item role="listitem">Item 3</mat-list-item>
+          <mat-list-item role="listitem" *ngFor="let filterState of filteredStates; let i = index" [class.highlight]="i == selectedRow" on-mouseover='highlightRow(i, filterState)' on-mouseleave='highlightRow(-1, filterState)' (click)="routeToSchoolHome(filterState)">{{filterState.name}}</mat-list-item>
+          <mat-list-item role="listitem" *ngIf="noSchoolsFound">No Schools Were Found in {{selectedState}}</mat-list-item>
         </mat-list>
-      </span>
+      </div>
+    </div>
   </form>
-  
 </div>
 <div class="container">
   

@@ -1,74 +1,75 @@
 .signInUser {
-  display: block;
-  padding-top: 20%;
+    display: block;
+    padding-top: 20%;
 }
 
 mat-card {
-  margin: 0 auto;
-  width: 40%;
-  vertical-align: middle;
-
-  mat-card-title {
     margin: 0 auto;
-    text-align: center;
-  }
+    width: 40%;
+    vertical-align:middle; 
+
+    mat-card-title {
+        margin: 0 auto;
+        text-align: center;
+    }
 }
 
 .signInInput {
-  width: 100%;
+    width: 100%;
 }
 
 .buttonBlock {
-  padding-top: 8px;
+    padding-top: 8px;
 }
 
 .logInButton {
-  padding-top: 8px;
+    padding-top: 8px;
 }
 
 .or {
-  text-align: center;
-  padding-top: 10px;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .signUpButton {
-  padding-top: 5px;
+    padding-top: 5px;
 }
 
+
 .buttons {
-  display: block;
-  height: 35px !important;
-  width: 100% !important;
-  font-size: 18px;
+    display: block;
+    height: 35px !important;
+    width: 100% !important;
+    font-size: 18px;
 }
 
 .selectSignUpType {
-  padding-top: 10em;
-  text-align: center;
+    padding-top: 10em;
+    text-align: center;
 }
 
 .selectionTitle {
-  padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .selectionButtons {
-  display: block;
-  margin: 0 auto;
-  height: 50px !important;
-  width: 50% !important;
-  font-size: 22px;
+    display: block;
+    margin: 0 auto;
+    height: 50px !important;
+    width: 50% !important;
+    font-size: 22px;
 }
 
 .selectSchoolButton {
-  padding-top: 40px;
+    padding-top: 40px;
 }
 
 .school-first-step {
-  min-width: 150px;
-  max-width: 400px;
-  width: 100%;
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
 }
 
 .school-first-step-inputs {
-  width: 100%;
+    width: 100%;
 }

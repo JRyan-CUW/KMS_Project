@@ -1,5 +1,7 @@
+
+
 export class User {
-  uid: string;
-  email: string;
-  name: string;
+    uid: string;
+    email: string;
+    name: string;
 }
