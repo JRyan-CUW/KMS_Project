@@ -1,22 +1,22 @@
-@import "styles-variables";
+@import 'styles-variables';
 
-@import "../node_modules/bootstrap/scss/bootstrap-reboot";
-@import "../node_modules/bootstrap/scss/bootstrap-grid";
-@import "styles-reset";
+@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+@import '../node_modules/bootstrap/scss/bootstrap-grid';
+@import 'styles-reset';
 
-@import "../node_modules/@angular/material/theming";
+@import '../node_modules/@angular/material/theming';
 
 @include mat-core();
 
-@import "themes/default-theme.scss";
-@import "themes/light-theme.scss";
-@import "themes/black-theme.scss";
-@import "themes/nature-theme.scss";
+@import 'themes/default-theme.scss';
+@import 'themes/light-theme.scss';
+@import 'themes/black-theme.scss';
+@import 'themes/nature-theme.scss';
 
-@import "styles-reset.scss-theme";
-@import "app/app.component.scss-theme.scss";
-@import "app/shared/big-input/big-input.component.scss-theme";
-@import "app/about/about.component.scss-theme";
+@import 'styles-reset.scss-theme';
+@import 'app/app.component.scss-theme.scss';
+@import 'app/shared/big-input/big-input.component.scss-theme';
+@import 'app/about/about.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include anms-styles-reset-theme($theme);
